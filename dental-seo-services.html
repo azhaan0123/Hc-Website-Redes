@@ -344,106 +344,188 @@ main a.bg-primary:hover, main button.bg-primary:hover, main button[type="submit"
   .xl\:col-span-8 { grid-column: span 8 / span 8; }
   .xl\:col-span-12 { grid-column: span 12 / span 12; }
 }
+
+
+/* Clean & Smooth Section Polish & Animations */
+@keyframes hcFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hcHeroFade {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hc-animate-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hc-animate-reveal.hc-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delay classes */
+.hc-delay-100 { transition-delay: 0.1s; }
+.hc-delay-200 { transition-delay: 0.2s; }
+.hc-delay-300 { transition-delay: 0.3s; }
+.hc-delay-400 { transition-delay: 0.4s; }
+
+/* Hero entrance */
+.hc-hero-entrance {
+  animation: hcHeroFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Section Header Polish */
+main section h1, main section h2 {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+main section .hc-section-label {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Card Hover Elevation */
+.hc-grid-cell, .arlo-grid-cell, .bg-card {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.hc-grid-cell:hover, .arlo-grid-cell:hover, .bg-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.09), 0 0 0 1px rgba(229, 104, 57, 0.22) !important;
+  border-color: rgba(229, 104, 57, 0.35) !important;
+}
+.dark .hc-grid-cell:hover, .dark .arlo-grid-cell:hover, .dark .bg-card:hover {
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.18) !important;
+}
 </style><main class="min-h-screen pt-[160px] sm:pt-[110px] md:pt-[120px] bg-[#FAFAF7] dark:bg-[#0A1612] text-foreground">
-<!-- 1. Hero Section -->
-  <section class="pt-16 pb-24 md:py-32 border-b border-border/40">
-    <div class="container mx-auto px-6 lg:px-12 max-w-8xl">
-      <div class="space-y-8">
-        <div class="max-w-8xl mx-auto text-center">
-          <h1 class="font-display text-5xl sm:text-6xl md:text-7xl lg:text-7xl font-extrabold tracking-tight leading-[1.04] text-foreground text-center mx-auto">
+<!-- 1. Hero Section (KEPT SAME) -->
+<section class="pt-16 pb-24 md:py-32 border-b border-border/40">
+<div class="container mx-auto px-6 lg:px-12 max-w-8xl text-center">
+<div class="space-y-8 text-center mx-auto w-full">
+<div class="max-w-6xl mx-auto text-center space-y-6">
+<h1 class="font-display sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.04] max-w-5xl hc-hero-entrance text-center mx-auto w-full">
             Dental SEO Services That Get Your Practice <span style="color: #f59794;">Found, Chosen, and Booked</span>
-          </h1>
-        </div>
-        <div class="max-w-6xl mx-auto text-center">
-          <p class="text-xl sm:text-2xl text-muted-foreground leading-relaxed font-normal">
+</h1>
+</div>
+<div class="max-w-6xl mx-auto text-center">
+<p class="text-xl sm:text-2xl text-muted-foreground leading-relaxed font-normal">
             Dental SEO is the process of optimizing your website, Google Business Profile, and content so patients searching for a dentist find your practice first on Google, on Maps, and in AI search results.
           </p>
-        </div>
-        <div class="pt-4 flex flex-wrap justify-center gap-4 w-full">
-          <a class="inline-flex items-center justify-center gap-2 rounded-full bg-primary text-primary-foreground font-bold px-8 py-4 text-base hover:bg-primary/90 transition-all active:scale-[0.98]" href="#audit">
+</div>
+<div class="pt-4 flex flex-wrap justify-center gap-4 w-full">
+<a class="inline-flex items-center justify-center gap-2 rounded-full font-bold px-8 py-4 text-base hover:opacity-90 transition-all active:scale-[0.98] shadow-md" style="background-color: #f59794; color: #2E2522;" href="#audit">
             Get a Free SEO Audit
-            <svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-          </a>
-          <a class="inline-flex items-center justify-center gap-2 rounded-full border border-border text-foreground font-bold px-8 py-4 text-base hover:bg-muted transition-colors active:scale-[0.98]" href="/contact">
+            <svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+</a>
+<a class="inline-flex items-center justify-center gap-2 rounded-full border border-border text-foreground font-bold px-8 py-4 text-base hover:bg-muted transition-colors active:scale-[0.98]" href="/contact">
             Talk to a Strategist
           </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 2. Trust Stat Bar & Video player (Testimonials) -->
-  <section class="py-16 md:py-24 border-b border-border/40 bg-background/50">
-    <div class="container mx-auto px-6 lg:px-12 max-w-8xl space-y-16">
-      
-      <!-- Video Player Interface -->
-      <div class="w-full max-w-5xl mx-auto">
-        <div class="relative rounded-3xl overflow-hidden border border-border/80 shadow-2xl group cursor-pointer aspect-16/9" style="background-color: #0a1612; max-height: 640px;">
-          <!-- Ambient lighting overlays -->
-          <div class="absolute inset-0 z-10 transition-opacity duration-300 group-hover:opacity-75" style="background: radial-gradient(circle at top right, rgba(245, 151, 148, 0.22), transparent 55%), radial-gradient(circle at bottom left, rgba(0, 0, 0, 0.85), transparent 70%);"></div>
-          <div class="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px] opacity-10"></div>
-          
-          <!-- Top bar badge -->
-          <div class="absolute top-6 left-6 sm:top-8 sm:left-8 z-20">
-            <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm" style="background-color: rgba(10, 22, 18, 0.85); border: 1px solid rgba(255, 255, 255, 0.18); color: #ffffff;">
-              <span class="w-2 h-2 rounded-full" style="background-color: #f59794;"></span>
+</div>
+</div>
+</div>
+</section>
+<!-- 2. Video Player Section -->
+<section class="py-16 md:py-24 border-b border-border/40 bg-background">
+<div class="container mx-auto px-6 lg:px-12 max-w-6xl">
+<!-- Video Player Interface -->
+<div class="w-full max-w-5xl mx-auto hc-animate-reveal">
+<div class="relative rounded-3xl overflow-hidden border border-border/80 shadow-2xl group cursor-pointer aspect-16/9" style="background-color: #0a1612; max-height: 640px;">
+<!-- Ambient lighting overlays -->
+<div class="absolute inset-0 z-10 transition-opacity duration-300 group-hover:opacity-75" style="background: radial-gradient(circle at top right, rgba(245, 151, 148, 0.22), transparent 55%), radial-gradient(circle at bottom left, rgba(0, 0, 0, 0.85), transparent 70%);"></div>
+<div class="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px] opacity-10"></div>
+<!-- Top bar badge -->
+<div class="absolute top-6 left-6 sm:top-8 sm:left-8 z-20">
+<span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm" style="background-color: rgba(10, 22, 18, 0.85); border: 1px solid rgba(255, 255, 255, 0.18); color: #ffffff;">
+<span class="w-2 h-2 rounded-full" style="background-color: #f59794;"></span>
               Client Testimonials
             </span>
-          </div>
-
-          <!-- Play Button Overlay -->
-          <div class="absolute inset-0 flex items-center justify-center z-30">
-            <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center shadow-2xl transition-transform duration-300 group-hover:scale-110 relative" style="background-color: #ffffff;">
-              <span class="absolute inset-0 rounded-full animate-ping" style="border: 2px solid rgba(255, 255, 255, 0.4);"></span>
-              <svg class="translate-x-0.5 w-8 h-8 sm:w-10 sm:h-10" style="fill: #0a1612;" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"></path></svg>
-            </div>
-          </div>
-
-          <!-- Video Panel (Bottom Left) -->
-          <div class="absolute bottom-6 left-6 right-6 sm:bottom-8 sm:left-8 sm:right-auto z-20 max-w-xl p-6 sm:p-8 rounded-2xl shadow-2xl" style="background-color: rgba(10, 22, 18, 0.90); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.18);">
-            <h4 class="font-display text-xl sm:text-2xl font-bold tracking-tight mb-2 text-left" style="color: #ffffff;">Real Results from Dental Practices</h4>
-            <p class="text-xs sm:text-sm leading-relaxed text-left" style="color: rgba(255, 255, 255, 0.85);">Hear how practices doubled their new patient bookings through specialized dental SEO strategies.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+</div>
+<!-- Play Button Overlay -->
+<div class="absolute inset-0 flex items-center justify-center z-30">
+<div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center shadow-2xl transition-transform duration-300 group-hover:scale-110 relative" style="background-color: #ffffff;">
+<span class="absolute inset-0 rounded-full animate-ping" style="border: 2px solid rgba(255, 255, 255, 0.4);"></span>
+<svg class="translate-x-0.5 w-8 h-8 sm:w-10 sm:h-10" style="fill: #0a1612;" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"></path></svg>
+</div>
+</div>
+<!-- Video Panel (Bottom Left) -->
+<div class="absolute bottom-6 left-6 right-6 sm:bottom-8 sm:left-8 sm:right-auto z-20 max-w-xl p-6 sm:p-8 rounded-2xl shadow-2xl" style="background-color: rgba(10, 22, 18, 0.90); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.18);">
+<h4 class="font-display text-xl sm:text-2xl font-bold tracking-tight mb-2 text-left" style="color: #ffffff;">Real Results from Dental Practices</h4>
+<p class="text-xs sm:text-sm leading-relaxed text-left" style="color: rgba(255, 255, 255, 0.85);">Hear how practices doubled their new patient bookings through specialized dental SEO strategies.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
 
 <!-- 3. Why Dental SEO Matters -->
-<section class="py-24 md:py-32 border-b border-border/40">
-<div class="container mx-auto px-6 lg:px-12 max-w-7xl">
+<section class="py-24 md:py-32 border-b border-border/40 bg-background">
+<div class="container mx-auto px-6 lg:px-12 max-w-6xl">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-<div class="lg:col-span-5 space-y-6">
-<span class="hc-section-label text-primary">High-Intent Traffic</span>
-<h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
-            Why Dental SEO Matters for Your Practice
-          </h2>
-<p class="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-            When patients have dental needs, they turn to search engines. If you aren't visible where they look, you lose patients to competitors.
-          </p>
+<!-- Left Column: Title and Description -->
+<div class="lg:col-span-5 space-y-4 hc-animate-reveal">
+<span class="text-xs font-bold uppercase tracking-widest block" style="color: #e96363;">-- WHY DENTAL SEO MATTERS</span>
+<h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-foreground">
+        Why Dental SEO Matters for Your Practice
+      </h2>
+<p class="text-base sm:text-lg text-muted-foreground leading-relaxed pt-2">
+        When patients have dental needs, they turn to search engines. If you aren't visible where they look, you lose patients to competitors.
+      </p>
 </div>
-<div class="lg:col-span-7 space-y-8">
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-<div class="p-8 rounded-2xl border border-border/50 bg-card hover:shadow-lg transition-shadow">
-<h3 class="font-display text-2xl font-bold text-foreground mb-3" style="color: #f59794;">~50%</h3>
-<p class="font-bold text-lg mb-2">Local Intent</p>
-<p class="text-muted-foreground text-sm leading-relaxed">
-                Nearly half of all Google searches have local intent. Patients are looking for providers near them, immediately.
-              </p>
+
+<!-- Right Column: 3 Stat Cards Grid -->
+<div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5 hc-animate-reveal hc-delay-100">
+<!-- Card 1: Lead Intent -->
+<div class="bg-white dark:bg-card border border-border/60 rounded-3xl p-6 sm:p-7 shadow-sm flex flex-col justify-between hover:border-[#f59794]/40 transition-all duration-300">
+<div>
+<div class="w-11 h-11 rounded-2xl flex items-center justify-center mb-6" style="background-color: rgba(233, 99, 99, 0.12);">
+<svg fill="none" height="20" stroke="#e96363" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
 </div>
-<div class="p-8 rounded-2xl border border-border/50 bg-card hover:shadow-lg transition-shadow">
-<h3 class="font-display text-2xl font-bold text-foreground mb-3" style="color: #f59794;">Top 3</h3>
-<p class="font-bold text-lg mb-2">Map Pack Dominance</p>
-<p class="text-muted-foreground text-sm leading-relaxed">
-                Practices in the top 3 Google Map Pack results get the majority of patient clicks and booking conversions.
-              </p>
+<div class="font-display text-3xl font-extrabold mb-1" style="color: #e96363;">~ 50%</div>
+<h4 class="font-bold text-foreground text-base mb-2">Lead Intent</h4>
+<p class="text-xs sm:text-sm text-muted-foreground leading-relaxed">Nearly half of all Google searches have local intent — meaning your practice must show up nearby.</p>
 </div>
 </div>
-<div class="p-8 rounded-2xl border border-border/50 bg-card hover:shadow-lg transition-shadow">
-<h3 class="font-display text-2xl font-bold text-foreground mb-3">The First Page Matters</h3>
-<p class="text-muted-foreground text-sm leading-relaxed mb-4">
-              Most patients choose a dentist based on what they find on the first page of search results. Being on page two means being invisible to high-intent patients looking for care today.
-            </p>
+
+<!-- Card 2: Pack Dominance -->
+<div class="bg-white dark:bg-card border border-border/60 rounded-3xl p-6 sm:p-7 shadow-sm flex flex-col justify-between hover:border-[#f59794]/40 transition-all duration-300">
+<div>
+<div class="w-11 h-11 rounded-2xl flex items-center justify-center mb-6" style="background-color: rgba(233, 99, 99, 0.12);">
+<svg fill="none" height="20" stroke="#e96363" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+</div>
+<div class="font-display text-3xl font-extrabold mb-1" style="color: #e96363;">Top 3</div>
+<h4 class="font-bold text-foreground text-base mb-2">Pack Dominance</h4>
+<p class="text-xs sm:text-sm text-muted-foreground leading-relaxed">Practices in the top 3 Google Map Pack results get the majority of patient clicks and calls.</p>
+</div>
+</div>
+
+<!-- Card 3: First Page Matters (Full Width) -->
+<div class="sm:col-span-2 bg-white dark:bg-card border border-border/60 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row items-start sm:items-center gap-6 hover:border-[#f59794]/40 transition-all duration-300">
+<div class="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 font-display text-lg font-bold" style="background-color: rgba(233, 99, 99, 0.12); color: #e96363;">
+          1st
+        </div>
+<div class="flex-1">
+<h4 class="font-bold text-foreground text-lg mb-1">The First Page Matters</h4>
+<p class="text-xs sm:text-sm text-muted-foreground leading-relaxed">90% of online experiences begin with a search — and over 75% never scroll past page one. Be there when patients are ready to see you.</p>
+</div>
 </div>
 </div>
 </div>
@@ -451,381 +533,431 @@ main a.bg-primary:hover, main button.bg-primary:hover, main button[type="submit"
 </section>
 
 <!-- 4. Our Dental SEO Services -->
-<section class="py-24 md:py-32 border-b border-border/40 bg-background/50">
-<div class="container mx-auto px-6 lg:px-12 max-w-7xl">
-<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 pb-8 border-b border-border/40">
-<div class="space-y-3">
-<span class="hc-section-label text-primary">Core Expertise</span>
-<h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">Our Dental SEO Services</h2>
+<section class="py-24 md:py-32 border-b border-border/40 bg-background">
+<div class="container mx-auto px-6 lg:px-12 max-w-6xl">
+<div class="bg-[#FAFAF7] dark:bg-card/30 rounded-[2.5rem] p-8 sm:p-12 lg:p-16 border border-border/50 shadow-sm hc-animate-reveal">
+<!-- Section Header Split -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-12 lg:mb-16">
+<div class="lg:col-span-5 space-y-2">
+<span class="text-xs font-bold uppercase tracking-widest block" style="color: #e96363;">-- CORE EXPERTISE</span>
+<h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground">Our Dental SEO Services</h2>
 </div>
-<p class="text-lg sm:text-xl text-muted-foreground max-w-xl">
-          Dental services for SEO/AEO/GEO: From local map rankings to AI search visibility, our dental SEO services are built to get your practice found, trusted, and chosen covering Local SEO, On-Page SEO, AEO/GEO, content strategy, technical SEO, and link building.
-        </p>
+<div class="lg:col-span-7">
+<p class="text-sm sm:text-base text-muted-foreground leading-relaxed">
+            Dental services for SEO/AEO/GEO: From local map rankings to AI search visibility, our dental SEO services are built to grow your practice's brand, attract more patients searching Local SEO, G Maps SEO, Flex cycling, content marketing, technical SEO, and link building.
+          </p>
 </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-        <!-- GBP Rebuild -->
-        <div class="group relative p-8 sm:p-10 rounded-3xl border border-border/50 bg-card hover:bg-card/80 hover:border-primary/30 transition-all duration-300 shadow-sm hover:shadow-xl overflow-hidden flex flex-col justify-between">
-          <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          <div class="relative space-y-6">
-            <div class="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center border border-primary/20 group-hover:scale-110 transition-transform duration-300">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-            </div>
-            <h3 class="font-display text-xl font-bold text-foreground">Google Business Profile Rebuild</h3>
-            <p class="text-muted-foreground text-sm leading-relaxed">
-              Most dental practices sit under a generic "Dentist" category, missing specialty subcategories like "Cosmetic Dentist" or "Emergency Dental Service" that Google rewards. We rebuild your GBP with the correct category and service attributes so you show up for the searches that match what you actually offer.
-            </p>
-          </div>
-        </div>
+</div>
 
-        <!-- Specialty Strategy -->
-        <div class="group relative p-8 sm:p-10 rounded-3xl border border-border/50 bg-card hover:bg-card/80 hover:border-primary/30 transition-all duration-300 shadow-sm hover:shadow-xl overflow-hidden flex flex-col justify-between">
-          <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          <div class="relative space-y-6">
-            <div class="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center border border-primary/20 group-hover:scale-110 transition-transform duration-300">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
-            </div>
-            <h3 class="font-display text-xl font-bold text-foreground">Procedure-Specific Keyword Strategy</h3>
-            <p class="text-muted-foreground text-sm leading-relaxed">
-              We target what patients actually search before booking — "dental implants near me," "emergency dentist in florida" — not generic terms that bring traffic but no appointments.
-            </p>
-          </div>
-        </div>
+<!-- Cards Grid (2x2) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Card 1 -->
+<div class="bg-white dark:bg-card border border-border/60 rounded-3xl p-8 shadow-sm group hover:border-[#f59794]/50 hover:shadow-md transition-all duration-300 relative flex flex-col justify-between">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform" style="background-color: rgba(48, 128, 255, 0.1); color: #3080ff;">
+<svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+</div>
+<div class="w-9 h-9 rounded-full border border-border/60 flex items-center justify-center text-muted-foreground group-hover:bg-[#f59794] group-hover:text-white group-hover:border-[#f59794] transition-all">
+<svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+</div>
+</div>
+<div class="space-y-2">
+<h3 class="font-display text-lg font-bold text-foreground">Google Business Profile Rebuild</h3>
+<p class="text-muted-foreground text-sm leading-relaxed">We audit data-rich, optimized profiles that convert searches into appointments — with reviews, photos, and posts that build trust and visibility.</p>
+</div>
+</div>
 
-        <!-- Map Pack -->
-        <div class="group relative p-8 sm:p-10 rounded-3xl border border-border/50 bg-card hover:bg-card/80 hover:border-primary/30 transition-all duration-300 shadow-sm hover:shadow-xl overflow-hidden flex flex-col justify-between">
-          <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          <div class="relative space-y-6">
-            <div class="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center border border-primary/20 group-hover:scale-110 transition-transform duration-300">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-            </div>
-            <h3 class="font-display text-xl font-bold text-foreground">Local Map Pack Authority</h3>
-            <p class="text-muted-foreground text-sm leading-relaxed">
-              Correct GBP setup, citation cleanup across 50+ directories, geo-targeted local pages, and a review strategy built for steady 5-star growth, the full stack behind map pack rankings.
-            </p>
-          </div>
-        </div>
+<!-- Card 2 -->
+<div class="bg-white dark:bg-card border border-border/60 rounded-3xl p-8 shadow-sm group hover:border-[#f59794]/50 hover:shadow-md transition-all duration-300 relative flex flex-col justify-between">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform" style="background-color: rgba(233, 99, 99, 0.12); color: #e96363;">
+<svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+</div>
+<div class="w-9 h-9 rounded-full border border-border/60 flex items-center justify-center text-muted-foreground group-hover:bg-[#f59794] group-hover:text-white group-hover:border-[#f59794] transition-all">
+<svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+</div>
+</div>
+<div class="space-y-2">
+<h3 class="font-display text-lg font-bold text-foreground">Procedure-Specific Keyword Strategy</h3>
+<p class="text-muted-foreground text-sm leading-relaxed">We target what patients actually search for: "teeth whitening," "Invisalign," "emergency dentist near me" — and position you for the #1 ranking results.</p>
+</div>
+</div>
 
-        <!-- HIPAA Compliance -->
-        <div class="group relative p-8 sm:p-10 rounded-3xl border border-border/50 bg-card hover:bg-card/80 hover:border-primary/30 transition-all duration-300 shadow-sm hover:shadow-xl overflow-hidden flex flex-col justify-between">
-          <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          <div class="relative space-y-6">
-            <div class="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center border border-primary/20 group-hover:scale-110 transition-transform duration-300">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg>
-            </div>
-            <h3 class="font-display text-xl font-bold text-foreground">HIPAA-Compliant Tracking</h3>
-            <p class="text-muted-foreground text-sm leading-relaxed">
-              We audit your marketing stack, tracking pixels, GA4 consent, vendor BAAs and close compliance gaps before touching anything new.
-            </p>
-          </div>
-        </div>
+<!-- Card 3 -->
+<div class="bg-white dark:bg-card border border-border/60 rounded-3xl p-8 shadow-sm group hover:border-[#f59794]/50 hover:shadow-md transition-all duration-300 relative flex flex-col justify-between">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform" style="background-color: rgba(16, 185, 129, 0.12); color: #10b981;">
+<svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+</div>
+<div class="w-9 h-9 rounded-full border border-border/60 flex items-center justify-center text-muted-foreground group-hover:bg-[#f59794] group-hover:text-white group-hover:border-[#f59794] transition-all">
+<svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+</div>
+</div>
+<div class="space-y-2">
+<h3 class="font-display text-lg font-bold text-foreground">Local Map Pack Authority</h3>
+<p class="text-muted-foreground text-sm leading-relaxed">Dominate Google Maps, attract nearby patients, and outperform local competitors in your city.</p>
+</div>
+</div>
 
-      </div>
+<!-- Card 4 -->
+<div class="bg-white dark:bg-card border border-border/60 rounded-3xl p-8 shadow-sm group hover:border-[#f59794]/50 hover:shadow-md transition-all duration-300 relative flex flex-col justify-between">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform" style="background-color: rgba(141, 84, 255, 0.12); color: #8d54ff;">
+<svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg>
+</div>
+<div class="w-9 h-9 rounded-full border border-border/60 flex items-center justify-center text-muted-foreground group-hover:bg-[#f59794] group-hover:text-white group-hover:border-[#f59794] transition-all">
+<svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+</div>
+</div>
+<div class="space-y-2">
+<h3 class="font-display text-lg font-bold text-foreground">HIPAA-Compliant Tracking</h3>
+<p class="text-muted-foreground text-sm leading-relaxed">We build your campaigns with security and compliance at the core — protecting your data while tracking what matters.</p>
+</div>
+</div>
+</div>
+</div>
 </div>
 </section>
 
 <!-- 5. How It Works -->
-<section class="py-24 md:py-32 border-b border-border/40">
-<div class="container mx-auto px-6 lg:px-12 max-w-7xl">
-<div class="text-center max-w-3xl mx-auto mb-16 md:mb-24 space-y-4">
-<span class="hc-section-label text-primary">Process</span>
-<h2 class="font-display text-4xl sm:text-5xl font-extrabold tracking-tight">How It Works</h2>
+<section class="py-24 md:py-32 border-b border-border/40 bg-background">
+<div class="container mx-auto px-6 lg:px-12 max-w-6xl">
+<div class="text-center max-w-2xl mx-auto mb-16 space-y-3 hc-animate-reveal">
+<span class="text-xs font-bold uppercase tracking-widest block" style="color: #e96363;">-- PROCESS</span>
+<h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground">How It Works</h2>
+<p class="text-base sm:text-lg text-muted-foreground leading-relaxed">A simple, proven process to rank higher and get more patients.</p>
 </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        
-        <!-- Step 1 -->
-        <div class="relative flex flex-col md:flex-row gap-6 items-start group">
-          <div class="hidden md:flex w-12 shrink-0 justify-center z-10 pt-4">
-            <div class="w-12 h-12 rounded-full bg-background border-4 border-card shadow-sm flex items-center justify-center text-primary font-bold z-10 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary/30 transition-all duration-300">1</div>
-          </div>
-          <div class="flex-1 w-full bg-card border border-border/50 rounded-3xl p-8 sm:p-10 shadow-sm hover:shadow-xl transition-all duration-300 hover:border-primary/30">
-            <div class="flex items-center gap-4 mb-4">
-              <span class="md:hidden w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-sm">1</span>
-              <span class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary font-bold text-xs uppercase tracking-widest border border-primary/20">Audit</span>
-            </div>
-            <h3 class="font-display text-2xl font-bold text-foreground mb-3">Free Audit &amp; Diagnosis</h3>
-            <p class="text-lg text-muted-foreground leading-relaxed">
-              We assess your current visibility, technical health, and competitive position and tell you exactly where you're losing patients.
-            </p>
-          </div>
-        </div>
 
-        <!-- Step 2 -->
-        <div class="relative flex flex-col md:flex-row gap-6 items-start group">
-          <div class="hidden md:flex w-12 shrink-0 justify-center z-10 pt-4">
-            <div class="w-12 h-12 rounded-full bg-background border-4 border-card shadow-sm flex items-center justify-center text-primary font-bold z-10 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary/30 transition-all duration-300">2</div>
-          </div>
-          <div class="flex-1 w-full bg-card border border-border/50 rounded-3xl p-8 sm:p-10 shadow-sm hover:shadow-xl transition-all duration-300 hover:border-primary/30">
-            <div class="flex items-center gap-4 mb-4">
-              <span class="md:hidden w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-sm">2</span>
-              <span class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary font-bold text-xs uppercase tracking-widest border border-primary/20">Strategy</span>
-            </div>
-            <h3 class="font-display text-2xl font-bold text-foreground mb-3">Custom Strategy</h3>
-            <p class="text-lg text-muted-foreground leading-relaxed">
-              A roadmap built around your highest-value procedures, your location, and your actual local competitors.
-            </p>
-          </div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 hc-animate-reveal hc-delay-100">
+<!-- Step 1 -->
+<div class="bg-white dark:bg-card border border-border/60 rounded-3xl p-6 sm:p-8 shadow-sm flex items-start gap-5 group hover:border-[#f59794]/40 transition-all duration-300">
+<div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 font-display font-bold text-sm" style="background-color: rgba(233, 99, 99, 0.12); color: #e96363;">
+          01
         </div>
+<div class="space-y-2 flex-1">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl flex items-center justify-center shrink-0" style="background-color: rgba(233, 99, 99, 0.08); color: #e96363;">
+<svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+</div>
+<h3 class="font-display text-lg font-bold text-foreground">Free Audit &amp; Diagnosis</h3>
+</div>
+<p class="text-muted-foreground text-sm leading-relaxed">We analyze your current visibility, website health, and competitors to find exactly where you're losing patients.</p>
+</div>
+</div>
 
-        <!-- Step 3 -->
-        <div class="relative flex flex-col md:flex-row gap-6 items-start group">
-          <div class="hidden md:flex w-12 shrink-0 justify-center z-10 pt-4">
-            <div class="w-12 h-12 rounded-full bg-background border-4 border-card shadow-sm flex items-center justify-center text-primary font-bold z-10 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary/30 transition-all duration-300">3</div>
-          </div>
-          <div class="flex-1 w-full bg-card border border-border/50 rounded-3xl p-8 sm:p-10 shadow-sm hover:shadow-xl transition-all duration-300 hover:border-primary/30">
-            <div class="flex items-center gap-4 mb-4">
-              <span class="md:hidden w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-sm">3</span>
-              <span class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary font-bold text-xs uppercase tracking-widest border border-primary/20">Execution</span>
-            </div>
-            <h3 class="font-display text-2xl font-bold text-foreground mb-3">Implementation</h3>
-            <p class="text-lg text-muted-foreground leading-relaxed">
-              On-page, technical, content, and link-building work, completed monthly, not just planned.
-            </p>
-          </div>
+<!-- Step 2 -->
+<div class="bg-white dark:bg-card border border-border/60 rounded-3xl p-6 sm:p-8 shadow-sm flex items-start gap-5 group hover:border-[#f59794]/40 transition-all duration-300">
+<div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 font-display font-bold text-sm" style="background-color: rgba(233, 99, 99, 0.12); color: #e96363;">
+          02
         </div>
+<div class="space-y-2 flex-1">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl flex items-center justify-center shrink-0" style="background-color: rgba(233, 99, 99, 0.08); color: #e96363;">
+<svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+</div>
+<h3 class="font-display text-lg font-bold text-foreground">Custom Strategy</h3>
+</div>
+<p class="text-muted-foreground text-sm leading-relaxed">A roadmap built around your practice's goals, location, and high-value procedures.</p>
+</div>
+</div>
 
-        <!-- Step 4 -->
-        <div class="relative flex flex-col md:flex-row gap-6 items-start group">
-          <div class="hidden md:flex w-12 shrink-0 justify-center z-10 pt-4">
-            <div class="w-12 h-12 rounded-full bg-background border-4 border-card shadow-sm flex items-center justify-center text-primary font-bold z-10 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary/30 transition-all duration-300">4</div>
-          </div>
-          <div class="flex-1 w-full bg-card border border-border/50 rounded-3xl p-8 sm:p-10 shadow-sm hover:shadow-xl transition-all duration-300 hover:border-primary/30">
-            <div class="flex items-center gap-4 mb-4">
-              <span class="md:hidden w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-sm">4</span>
-              <span class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary font-bold text-xs uppercase tracking-widest border border-primary/20">Reporting</span>
-            </div>
-            <h3 class="font-display text-2xl font-bold text-foreground mb-3">Transparent Reporting</h3>
-            <p class="text-lg text-muted-foreground leading-relaxed">
-              Transparent reporting tied to rankings, traffic, and patient activity not vanity metrics.
-            </p>
-          </div>
+<!-- Step 3 -->
+<div class="bg-white dark:bg-card border border-border/60 rounded-3xl p-6 sm:p-8 shadow-sm flex items-start gap-5 group hover:border-[#f59794]/40 transition-all duration-300">
+<div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 font-display font-bold text-sm" style="background-color: rgba(233, 99, 99, 0.12); color: #e96363;">
+          03
         </div>
-      </div>
+<div class="space-y-2 flex-1">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl flex items-center justify-center shrink-0" style="background-color: rgba(233, 99, 99, 0.08); color: #e96363;">
+<svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+</div>
+<h3 class="font-display text-lg font-bold text-foreground">Implementation</h3>
+</div>
+<p class="text-muted-foreground text-sm leading-relaxed">On-page, technical, and content work — executed step by step with clear milestones.</p>
+</div>
+</div>
+
+<!-- Step 4 -->
+<div class="bg-white dark:bg-card border border-border/60 rounded-3xl p-6 sm:p-8 shadow-sm flex items-start gap-5 group hover:border-[#f59794]/40 transition-all duration-300">
+<div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 font-display font-bold text-sm" style="background-color: rgba(233, 99, 99, 0.12); color: #e96363;">
+          04
+        </div>
+<div class="space-y-2 flex-1">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl flex items-center justify-center shrink-0" style="background-color: rgba(233, 99, 99, 0.08); color: #e96363;">
+<svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+</div>
+<h3 class="font-display text-lg font-bold text-foreground">Transparent Reporting</h3>
+</div>
+<p class="text-muted-foreground text-sm leading-relaxed">See real growth in rankings, calls, and patient activity, every month.</p>
+</div>
+</div>
+</div>
 </div>
 </section>
 
-<!-- 6. Why Choose Us / Reports Section -->
-<section class="py-24 md:py-32 border-b border-border/40">
-<div class="container mx-auto px-6 lg:px-12 max-w-7xl">
+<!-- 6. Why Choose Us -->
+<section class="py-24 md:py-32 border-b border-border/40 bg-background">
+<div class="container mx-auto px-6 lg:px-12 max-w-6xl">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-<!-- Checklist list -->
-<div class="lg:col-span-6 space-y-8">
-<div class="space-y-3">
-<span class="hc-section-label text-primary">Specialist Advantage</span>
-<h2 class="font-display text-4xl sm:text-5xl font-extrabold tracking-tight">Why Choose Us</h2>
+<!-- Left Checklist -->
+<div class="lg:col-span-6 space-y-8 hc-animate-reveal">
+<div>
+<span class="text-xs font-bold uppercase tracking-widest block mb-2" style="color: #e96363;">-- THE HEALTH COMPILER ADVANTAGE</span>
+<h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground">Why Choose Us</h2>
 </div>
+
 <div class="space-y-6">
-<div class="group flex items-start gap-5 p-4 -ml-4 rounded-2xl hover:bg-card hover:shadow-sm transition-all duration-300 border border-transparent hover:border-border/50">
-<div class="w-8 h-8 rounded-full bg-[#00DD8C]/10 border border-[#00DD8C]/30 text-[#00DD8C] flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-110 group-hover:bg-[#00DD8C] group-hover:text-white transition-all shadow-sm">
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+<!-- Checklist Item 1 -->
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 mt-0.5" style="background-color: rgba(233, 99, 99, 0.12); color: #e96363;">
+<svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><polyline points="16 11 18 13 22 9"></polyline></svg>
 </div>
 <div>
-<h4 class="font-bold text-foreground text-lg mb-1 group-hover:text-primary transition-colors">We optimize for booked patients</h4>
-<p class="text-muted-foreground text-sm leading-relaxed">Not just rankings and traffic. We care about conversions that grow your practice.</p>
+<h4 class="font-bold text-foreground text-base mb-1">We specialize in dental patients</h4>
+<p class="text-muted-foreground text-sm leading-relaxed">Built exclusively for dental and general clinics, not generic SEO.</p>
 </div>
 </div>
-<div class="group flex items-start gap-5 p-4 -ml-4 rounded-2xl hover:bg-card hover:shadow-sm transition-all duration-300 border border-transparent hover:border-border/50">
-<div class="w-8 h-8 rounded-full bg-[#00DD8C]/10 border border-[#00DD8C]/30 text-[#00DD8C] flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-110 group-hover:bg-[#00DD8C] group-hover:text-white transition-all shadow-sm">
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-</div>
-<div>
-<h4 class="font-bold text-foreground text-lg mb-1 group-hover:text-primary transition-colors">Procedure-Specific Strategy</h4>
-<p class="text-muted-foreground text-sm leading-relaxed">Every strategy is built around your specific procedures and local competition, not a generic template.</p>
-</div>
-</div>
-<div class="group flex items-start gap-5 p-4 -ml-4 rounded-2xl hover:bg-card hover:shadow-sm transition-all duration-300 border border-transparent hover:border-border/50">
-<div class="w-8 h-8 rounded-full bg-[#00DD8C]/10 border border-[#00DD8C]/30 text-[#00DD8C] flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-110 group-hover:bg-[#00DD8C] group-hover:text-white transition-all shadow-sm">
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+
+<!-- Checklist Item 2 -->
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 mt-0.5" style="background-color: rgba(233, 99, 99, 0.12); color: #e96363;">
+<svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"></circle><path d="m4.93 4.93 4.24 4.24"></path><path d="m14.83 9.17 4.24-4.24"></path><path d="m14.83 14.83 4.24 4.24"></path><path d="m9.17 14.83-4.24 4.24"></path></svg>
 </div>
 <div>
-<h4 class="font-bold text-foreground text-lg mb-1 group-hover:text-primary transition-colors">Transparent Reporting</h4>
-<p class="text-muted-foreground text-sm leading-relaxed">Transparent, monthly reporting tied to real outcomes. Track ROI, not just clicks.</p>
+<h4 class="font-bold text-foreground text-base mb-1">Procedure-specific strategy</h4>
+<p class="text-muted-foreground text-sm leading-relaxed">Every strategy is tailored to your high-value services.</p>
 </div>
 </div>
-<div class="group flex items-start gap-5 p-4 -ml-4 rounded-2xl hover:bg-card hover:shadow-sm transition-all duration-300 border border-transparent hover:border-border/50">
-<div class="w-8 h-8 rounded-full bg-[#00DD8C]/10 border border-[#00DD8C]/30 text-[#00DD8C] flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-110 group-hover:bg-[#00DD8C] group-hover:text-white transition-all shadow-sm">
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-</div>
-<div>
-<h4 class="font-bold text-foreground text-lg mb-1 group-hover:text-primary transition-colors">Ongoing Optimization</h4>
-<p class="text-muted-foreground text-sm leading-relaxed">Ongoing optimization is part of the service, not an upsell. Search landscapes change, and so does our strategy.</p>
-</div>
-</div>
-<div class="group flex items-start gap-5 p-4 -ml-4 rounded-2xl hover:bg-card hover:shadow-sm transition-all duration-300 border border-transparent hover:border-border/50">
-<div class="w-8 h-8 rounded-full bg-[#00DD8C]/10 border border-[#00DD8C]/30 text-[#00DD8C] flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-110 group-hover:bg-[#00DD8C] group-hover:text-white transition-all shadow-sm">
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+
+<!-- Checklist Item 3 -->
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 mt-0.5" style="background-color: rgba(233, 99, 99, 0.12); color: #e96363;">
+<svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M12 20V10"></path><path d="M18 20V4"></path><path d="M6 20v-6"></path></svg>
 </div>
 <div>
-<h4 class="font-bold text-foreground text-lg mb-1 group-hover:text-primary transition-colors">Dental-Specific Expertise</h4>
-<p class="text-muted-foreground text-sm leading-relaxed">We are not a generalist agency adding "SEO" to a long service list. We understand dental terminology and patient intent.</p>
+<h4 class="font-bold text-foreground text-base mb-1">Transparent reporting</h4>
+<p class="text-muted-foreground text-sm leading-relaxed">Track rankings, traffic, and patient activity — no black boxes.</p>
+</div>
+</div>
+
+<!-- Checklist Item 4 -->
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 mt-0.5" style="background-color: rgba(233, 99, 99, 0.12); color: #e96363;">
+<svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+</div>
+<div>
+<h4 class="font-bold text-foreground text-base mb-1">Ongoing optimization</h4>
+<p class="text-muted-foreground text-sm leading-relaxed">We refine campaigns as the market evolves to keep you ahead.</p>
+</div>
+</div>
+
+<!-- Checklist Item 5 -->
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 mt-0.5" style="background-color: rgba(233, 99, 99, 0.12); color: #e96363;">
+<svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+</div>
+<div>
+<h4 class="font-bold text-foreground text-base mb-1">Dental-first expertise</h4>
+<p class="text-muted-foreground text-sm leading-relaxed">15+ years combined healthcare SEO experience across 1,000+ practices.</p>
 </div>
 </div>
 </div>
 </div>
 
-<!-- 7. Practices That Choose Health Compiler Get Results -->
-<div class="lg:col-span-6 space-y-8 bg-muted/30 border border-border/40 p-8 rounded-3xl shadow-sm">
+<!-- Right Card: Results Panel -->
+<div class="lg:col-span-6 hc-animate-reveal hc-delay-200">
+<div class="bg-white dark:bg-card border border-border/60 rounded-[2.5rem] p-8 sm:p-10 shadow-md space-y-6">
 <h3 class="font-display text-2xl font-bold text-foreground">Practices That Choose Health Compiler Get Results</h3>
-<div class="space-y-6">
-<!-- Burkhart Report -->
-<div class="bg-card border border-border/60 rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-<div class="flex justify-between items-center mb-4">
-<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20 text-xs font-bold uppercase tracking-widest"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"></path><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg> Burkhart</span>
-<span class="text-xs font-bold text-[#00DD8C] bg-[#00DD8C]/10 px-3 py-1 rounded-full border border-[#00DD8C]/20">Growth Audit</span>
+
+<!-- Report Box 1 -->
+<div class="bg-[#FAFAF7] dark:bg-muted/30 border border-border/50 rounded-2xl p-6">
+<div class="mb-3">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider" style="background-color: rgba(233, 99, 99, 0.1); color: #e96363; border: 1px solid rgba(233, 99, 99, 0.2);">
+                Organic New Patient Growth
+              </span>
 </div>
-<h4 class="font-bold text-foreground text-xl mb-2">Organic New Patient Growth</h4>
-<p class="text-muted-foreground text-sm leading-relaxed mb-6">Ranked high-value procedure keywords to increase new patient bookings.</p>
-<div class="grid grid-cols-2 gap-4 border-t border-border/40 pt-4">
-<div>
-<div class="text-3xl font-bold text-foreground mb-1">+185%</div>
-<div class="text-[10px] text-muted-foreground font-bold uppercase tracking-widest">Organic Traffic</div>
+<p class="text-xs sm:text-sm text-muted-foreground mb-4 leading-relaxed">See steady traffic and patient conversion growth in 4-6 months.</p>
+<div class="flex items-end justify-between gap-4">
+<div class="flex gap-6">
+<div class="space-y-1">
+<div class="text-3xl font-extrabold text-foreground">+185%</div>
+<div class="text-[11px] text-muted-foreground font-semibold">Average traffic growth</div>
 </div>
-<div>
-<div class="text-3xl font-bold text-foreground mb-1">#1</div>
-<div class="text-[10px] text-muted-foreground font-bold uppercase tracking-widest">Map Rankings</div>
+<div class="space-y-1">
+<div class="text-3xl font-extrabold text-foreground">#1</div>
+<div class="text-[11px] text-muted-foreground font-semibold">Top-spot map dominance</div>
+</div>
+</div>
+<div class="w-24 h-12 shrink-0 flex items-end">
+<svg class="w-full h-full overflow-visible" viewbox="0 0 100 40">
+<path d="M0,35 Q20,38 40,25 T70,18 T100,5 L100,40 L0,40 Z" fill="rgba(245, 151, 148, 0.2)"></path>
+<path d="M0,35 Q20,38 40,25 T70,18 T100,5" fill="none" stroke="#f59794" stroke-width="2.5"></path>
+</svg>
 </div>
 </div>
 </div>
 
-<!-- DPCA Report -->
-<div class="bg-card border border-border/60 rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-<div class="flex justify-between items-center mb-4">
-<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/20 text-xs font-bold uppercase tracking-widest"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg> DPCA</span>
-<span class="text-xs font-bold text-[#00DD8C] bg-[#00DD8C]/10 px-3 py-1 rounded-full border border-[#00DD8C]/20">Visibility Audit</span>
+<!-- Report Box 2 -->
+<div class="bg-[#FAFAF7] dark:bg-muted/30 border border-border/50 rounded-2xl p-6">
+<div class="mb-3">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-600 border border-emerald-500/20">
+                Local Brand Authority
+              </span>
 </div>
-<h4 class="font-bold text-foreground text-xl mb-2">Local Brand Authority</h4>
-<p class="text-muted-foreground text-sm leading-relaxed mb-6">Optimized GBP and schema targeting specialized care searches.</p>
-<div class="grid grid-cols-2 gap-4 border-t border-border/40 pt-4">
-<div>
-<div class="text-3xl font-bold text-foreground mb-1">2.5x</div>
-<div class="text-[10px] text-muted-foreground font-bold uppercase tracking-widest">Phone Calls</div>
+<p class="text-xs sm:text-sm text-muted-foreground mb-4 leading-relaxed">Dominate commercial intent keywords across map &amp; web search.</p>
+<div class="flex items-end justify-between gap-4">
+<div class="flex gap-6">
+<div class="space-y-1">
+<div class="text-3xl font-extrabold text-foreground">2.5x</div>
+<div class="text-[11px] text-muted-foreground font-semibold">More phone calls</div>
 </div>
-<div>
-<div class="text-3xl font-bold text-foreground mb-1">Top 3</div>
-<div class="text-[10px] text-muted-foreground font-bold uppercase tracking-widest">Key Procedures</div>
+<div class="space-y-1">
+<div class="text-3xl font-extrabold text-foreground">Top 3</div>
+<div class="text-[11px] text-muted-foreground font-semibold">In search results</div>
+</div>
+</div>
+<div class="w-12 h-12 rounded-full flex items-center justify-center shrink-0 shadow-sm" style="background-color: rgba(48, 128, 255, 0.1); color: #3080ff;">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
 </div>
 </div>
 </div>
-
 </div>
 </div>
 </div>
 </div>
 </section>
 
-<!-- 8. Final CTA Section -->
-<section class="py-24 md:py-32 text-white relative overflow-hidden" id="audit" style="background-color: #2E2522; background-image: radial-gradient(circle at center, rgba(245, 151, 148, 0.15) 0%, rgba(46, 37, 34, 0) 80%);">
-<div class="container mx-auto px-6 lg:px-12 max-w-7xl relative z-10">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-<div class="lg:col-span-8 space-y-6">
-<h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-white">
+<!-- 7. Final CTA Section -->
+<section class="py-24 md:py-32 bg-background" id="audit">
+<div class="container mx-auto px-6 lg:px-12 max-w-6xl">
+<div class="rounded-[2.5rem] p-8 sm:p-12 lg:p-16 text-white relative overflow-hidden shadow-2xl border border-white/10 hc-animate-reveal" style="background-color: #2E2522; background-image: radial-gradient(circle at top right, rgba(245, 151, 148, 0.22) 0%, rgba(46, 37, 34, 0) 70%);">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
+<!-- Left Column -->
+<div class="lg:col-span-6 text-left space-y-4">
+<h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-white">
             Ready to Rank Higher and Get More Patients?
           </h2>
-<p class="text-lg sm:text-xl text-white/80 max-w-2xl leading-relaxed">
-            Get a free SEO audit of your practice's current search visibility, including local rankings, technical issues, and content gaps.
+<p class="text-base sm:text-lg text-white/80 leading-relaxed max-w-xl">
+            Get a free SEO audit of your practice's current search visibility, local rankings, technical issues, and content gaps.
           </p>
 </div>
-<div class="lg:col-span-4 space-y-6">
-<form class="space-y-4" onsubmit="event.preventDefault(); alert('Free audit requested! Our strategy team will contact you shortly.');">
-<input class="w-full bg-black/40 border border-white/20 rounded-xl px-4 py-3 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-[#f59794]" placeholder="Your Website URL" required="" type="url"/>
-<input class="w-full bg-black/40 border border-white/20 rounded-xl px-4 py-3 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-[#f59794]" placeholder="Your Email Address" required="" type="email"/>
-<button class="w-full inline-flex items-center justify-center rounded-full font-bold px-6 py-4 text-base shadow-lg hover:opacity-90 hover:scale-[1.02] transition-all duration-200" style="background-color: #f59794; color: #2E2522;" type="submit">
+<!-- Right Column Form -->
+<div class="lg:col-span-6">
+<form class="space-y-3 max-w-md mx-auto lg:ml-auto w-full" onsubmit="event.preventDefault(); alert('Free audit requested! Our strategy team will contact you shortly.');">
+<input class="w-full bg-black/40 border border-white/20 rounded-xl px-4 py-3.5 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-[#f59794]" placeholder="Your Website URL" required="" type="url"/>
+<input class="w-full bg-black/40 border border-white/20 rounded-xl px-4 py-3.5 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-[#f59794]" placeholder="Your Email Address" required="" type="email"/>
+<button class="w-full inline-flex items-center justify-center gap-2 rounded-full font-bold px-6 py-4 text-base shadow-lg hover:opacity-95 hover:scale-[1.01] transition-all duration-200" style="background-color: #f59794; color: #2E2522;" type="submit">
               Get My Free Audit
-            </button>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+</button>
+<span class="text-xs text-white/60 text-center block pt-1">No spam. Unsubscribe anytime.</span>
 </form>
-<div class="text-center">
-<span class="text-sm text-white/60">Or prefer email? <a class="hover:underline font-bold" style="color: #f59794;" href="mailto:info@healthcompiler.com">Email us</a></span>
 </div>
 </div>
 </div>
 </div>
 </section>
 
-<!-- 9. FAQ Accordion Section -->
-<section class="py-24 md:py-32 border-b border-border/40 bg-slate-50 dark:bg-background/20">
+<!-- 8. FAQ Accordion Section -->
+<section class="py-24 md:py-32 border-b border-border/40 bg-background">
 <div class="container mx-auto px-6 lg:px-12 max-w-4xl">
-<div class="text-center mb-16 space-y-3">
-<span class="hc-pill text-primary border border-primary/20 bg-primary/5">FAQs</span>
-<h2 class="font-display text-3xl md:text-5xl font-bold tracking-tight">Frequently Asked Questions</h2>
+<div class="text-center mb-16 space-y-3 hc-animate-reveal">
+<span class="text-xs font-bold uppercase tracking-widest block" style="color: #e96363;">-- FAQ</span>
+<h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground">Frequently Asked Questions</h2>
 </div>
-<div class="space-y-4">
 
+<div class="space-y-4">
 <!-- FAQ 1 -->
-<div class="border-b border-border/60 pb-4">
-<button aria-expanded="false" class="hc-accordion-trigger w-full flex items-center justify-between py-4 text-left font-display text-lg font-bold text-foreground transition-colors hover:text-primary focus:outline-none" onclick="toggleAccordion(this)">
+<div class="bg-white dark:bg-card border border-border/60 rounded-2xl p-5 sm:p-6 shadow-sm hover:border-[#f59794]/40 transition-all">
+<button aria-expanded="false" class="hc-accordion-trigger w-full flex items-center justify-between gap-4 text-left font-display text-base sm:text-lg font-bold text-foreground transition-colors hover:text-primary focus:outline-none" onclick="toggleAccordion(this)">
 <span>What is dental SEO?</span>
-<svg class="hc-accordion-icon h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<div class="w-8 h-8 rounded-full bg-muted/60 flex items-center justify-center shrink-0 transition-transform duration-300 hc-accordion-icon-box">
+<svg class="hc-accordion-icon h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</div>
 </button>
-<div class="hc-accordion-content hidden pr-12 text-muted-foreground leading-relaxed text-sm pt-2">
+<div class="hc-accordion-content hidden pr-12 text-muted-foreground leading-relaxed text-sm sm:text-base pt-3 border-t border-border/40 mt-3">
 <p>Dental SEO is the practice of optimizing a dental website and online listings to rank higher in search results for terms patients use to find a dentist, such as "dentist near me" or "[procedure] in [city]."</p>
 </div>
 </div>
 
 <!-- FAQ 2 -->
-<div class="border-b border-border/60 pb-4">
-<button aria-expanded="false" class="hc-accordion-trigger w-full flex items-center justify-between py-4 text-left font-display text-lg font-bold text-foreground transition-colors hover:text-primary focus:outline-none" onclick="toggleAccordion(this)">
+<div class="bg-white dark:bg-card border border-border/60 rounded-2xl p-5 sm:p-6 shadow-sm hover:border-[#f59794]/40 transition-all">
+<button aria-expanded="false" class="hc-accordion-trigger w-full flex items-center justify-between gap-4 text-left font-display text-base sm:text-lg font-bold text-foreground transition-colors hover:text-primary focus:outline-none" onclick="toggleAccordion(this)">
 <span>How much does dental SEO cost?</span>
-<svg class="hc-accordion-icon h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<div class="w-8 h-8 rounded-full bg-muted/60 flex items-center justify-center shrink-0 transition-transform duration-300 hc-accordion-icon-box">
+<svg class="hc-accordion-icon h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</div>
 </button>
-<div class="hc-accordion-content hidden pr-12 text-muted-foreground leading-relaxed text-sm pt-2">
+<div class="hc-accordion-content hidden pr-12 text-muted-foreground leading-relaxed text-sm sm:text-base pt-3 border-t border-border/40 mt-3">
 <p>Dental SEO typically costs between $500–$2,000 per month, depending on market competitiveness, practice size, and scope of services.</p>
 </div>
 </div>
 
 <!-- FAQ 3 -->
-<div class="border-b border-border/60 pb-4">
-<button aria-expanded="false" class="hc-accordion-trigger w-full flex items-center justify-between py-4 text-left font-display text-lg font-bold text-foreground transition-colors hover:text-primary focus:outline-none" onclick="toggleAccordion(this)">
+<div class="bg-white dark:bg-card border border-border/60 rounded-2xl p-5 sm:p-6 shadow-sm hover:border-[#f59794]/40 transition-all">
+<button aria-expanded="false" class="hc-accordion-trigger w-full flex items-center justify-between gap-4 text-left font-display text-base sm:text-lg font-bold text-foreground transition-colors hover:text-primary focus:outline-none" onclick="toggleAccordion(this)">
 <span>How is dental SEO different from general SEO?</span>
-<svg class="hc-accordion-icon h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<div class="w-8 h-8 rounded-full bg-muted/60 flex items-center justify-center shrink-0 transition-transform duration-300 hc-accordion-icon-box">
+<svg class="hc-accordion-icon h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</div>
 </button>
-<div class="hc-accordion-content hidden pr-12 text-muted-foreground leading-relaxed text-sm pt-2">
+<div class="hc-accordion-content hidden pr-12 text-muted-foreground leading-relaxed text-sm sm:text-base pt-3 border-t border-border/40 mt-3">
 <p>Dental SEO focuses specifically on local search intent, dental-specific keywords, and healthcare trust signals like reviews and credentials, which differ from general business SEO.</p>
 </div>
 </div>
 
 <!-- FAQ 4 -->
-<div class="border-b border-border/60 pb-4">
-<button aria-expanded="false" class="hc-accordion-trigger w-full flex items-center justify-between py-4 text-left font-display text-lg font-bold text-foreground transition-colors hover:text-primary focus:outline-none" onclick="toggleAccordion(this)">
+<div class="bg-white dark:bg-card border border-border/60 rounded-2xl p-5 sm:p-6 shadow-sm hover:border-[#f59794]/40 transition-all">
+<button aria-expanded="false" class="hc-accordion-trigger w-full flex items-center justify-between gap-4 text-left font-display text-base sm:text-lg font-bold text-foreground transition-colors hover:text-primary focus:outline-none" onclick="toggleAccordion(this)">
 <span>Do I need SEO if I already have a website?</span>
-<svg class="hc-accordion-icon h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<div class="w-8 h-8 rounded-full bg-muted/60 flex items-center justify-center shrink-0 transition-transform duration-300 hc-accordion-icon-box">
+<svg class="hc-accordion-icon h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</div>
 </button>
-<div class="hc-accordion-content hidden pr-12 text-muted-foreground leading-relaxed text-sm pt-2">
+<div class="hc-accordion-content hidden pr-12 text-muted-foreground leading-relaxed text-sm sm:text-base pt-3 border-t border-border/40 mt-3">
 <p>Yes. A website without SEO is difficult for both patients and search engines to find. SEO is what makes an existing website visible in search results.</p>
 </div>
 </div>
 
 <!-- FAQ 5 -->
-<div class="border-b border-border/60 pb-4">
-<button aria-expanded="false" class="hc-accordion-trigger w-full flex items-center justify-between py-4 text-left font-display text-lg font-bold text-foreground transition-colors hover:text-primary focus:outline-none" onclick="toggleAccordion(this)">
+<div class="bg-white dark:bg-card border border-border/60 rounded-2xl p-5 sm:p-6 shadow-sm hover:border-[#f59794]/40 transition-all">
+<button aria-expanded="false" class="hc-accordion-trigger w-full flex items-center justify-between gap-4 text-left font-display text-base sm:text-lg font-bold text-foreground transition-colors hover:text-primary focus:outline-none" onclick="toggleAccordion(this)">
 <span>What's the difference between local SEO and general SEO for dentists?</span>
-<svg class="hc-accordion-icon h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<div class="w-8 h-8 rounded-full bg-muted/60 flex items-center justify-center shrink-0 transition-transform duration-300 hc-accordion-icon-box">
+<svg class="hc-accordion-icon h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</div>
 </button>
-<div class="hc-accordion-content hidden pr-12 text-muted-foreground leading-relaxed text-sm pt-2">
+<div class="hc-accordion-content hidden pr-12 text-muted-foreground leading-relaxed text-sm sm:text-base pt-3 border-t border-border/40 mt-3">
 <p>Local SEO targets geographic, "near me" searches and Google Maps visibility. General SEO targets broader, non-location-specific keywords.</p>
 </div>
 </div>
 
 <!-- FAQ 6 -->
-<div class="border-b border-border/60 pb-4">
-<button aria-expanded="false" class="hc-accordion-trigger w-full flex items-center justify-between py-4 text-left font-display text-lg font-bold text-foreground transition-colors hover:text-primary focus:outline-none" onclick="toggleAccordion(this)">
+<div class="bg-white dark:bg-card border border-border/60 rounded-2xl p-5 sm:p-6 shadow-sm hover:border-[#f59794]/40 transition-all">
+<button aria-expanded="false" class="hc-accordion-trigger w-full flex items-center justify-between gap-4 text-left font-display text-base sm:text-lg font-bold text-foreground transition-colors hover:text-primary focus:outline-none" onclick="toggleAccordion(this)">
 <span>How do I track results from dental SEO?</span>
-<svg class="hc-accordion-icon h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<div class="w-8 h-8 rounded-full bg-muted/60 flex items-center justify-center shrink-0 transition-transform duration-300 hc-accordion-icon-box">
+<svg class="hc-accordion-icon h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</div>
 </button>
-<div class="hc-accordion-content hidden pr-12 text-muted-foreground leading-relaxed text-sm pt-2">
+<div class="hc-accordion-content hidden pr-12 text-muted-foreground leading-relaxed text-sm sm:text-base pt-3 border-t border-border/40 mt-3">
 <p>Results are tracked through keyword rankings, organic traffic, Google Business Profile insights, and call/appointment tracking tied to specific search sources.</p>
 </div>
 </div>
 
 <!-- FAQ 7 -->
-<div class="border-b border-border/60 pb-4">
-<button aria-expanded="false" class="hc-accordion-trigger w-full flex items-center justify-between py-4 text-left font-display text-lg font-bold text-foreground transition-colors hover:text-primary focus:outline-none" onclick="toggleAccordion(this)">
+<div class="bg-white dark:bg-card border border-border/60 rounded-2xl p-5 sm:p-6 shadow-sm hover:border-[#f59794]/40 transition-all">
+<button aria-expanded="false" class="hc-accordion-trigger w-full flex items-center justify-between gap-4 text-left font-display text-base sm:text-lg font-bold text-foreground transition-colors hover:text-primary focus:outline-none" onclick="toggleAccordion(this)">
 <span>How long does dental SEO take to work?</span>
-<svg class="hc-accordion-icon h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<div class="w-8 h-8 rounded-full bg-muted/60 flex items-center justify-center shrink-0 transition-transform duration-300 hc-accordion-icon-box">
+<svg class="hc-accordion-icon h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</div>
 </button>
-<div class="hc-accordion-content hidden pr-12 text-muted-foreground leading-relaxed text-sm pt-2">
+<div class="hc-accordion-content hidden pr-12 text-muted-foreground leading-relaxed text-sm sm:text-base pt-3 border-t border-border/40 mt-3">
 <p>Most practices see initial ranking improvements within 60–90 days, with stronger patient growth typically following after 4 - 6 months of consistent work.</p>
 </div>
 </div>
-
 </div>
 </div>
 </section>
@@ -841,4 +973,19 @@ main a.bg-primary:hover, main button.bg-primary:hover, main button[type="submit"
       }
     }
 </script>
-<!--$--><!--/$--></main><footer class="bg-background-secondary border-t border-border/50"><div class="container mx-auto px-6 py-12 md:py-16"><div class="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8"><div class="md:col-span-6 lg:col-span-5"><a class="inline-block mb-6" href="/"><img alt="HealthCompiler" class="h-10 w-auto" data-nimg="1" decoding="async" height="56" loading="lazy" src="images/image.png" srcset="images/image.png 1x, images/image.png 2x" style="color:transparent" width="360"/></a><div class="space-y-1 text-sm text-muted-foreground mb-4"><p class="font-semibold text-foreground">+1 408 883 7902</p><p>Health Compiler Inc.</p><p>2261 Market Street #4632</p><p>San Francisco, CA 94114</p></div><p class="text-sm text-muted-foreground mb-2">All Rights Reserved | Health Compiler Inc. © <!-- -->2026</p><p class="text-sm text-muted-foreground mb-4">Made with <span class="text-red-500">❤️</span> in San Francisco</p><div class="flex flex-wrap items-center gap-x-2 gap-y-1 mb-6"><a class="text-sm text-muted-foreground underline cursor-pointer hover:text-foreground transition-colors whitespace-nowrap" href="/privacy">Privacy Policy</a><span class="text-muted-foreground">|</span><a class="text-sm text-muted-foreground underline cursor-pointer hover:text-foreground transition-colors whitespace-nowrap" href="/terms">Terms of Service</a><span class="text-muted-foreground">|</span><a class="text-sm text-muted-foreground underline cursor-pointer hover:text-foreground transition-colors whitespace-nowrap" href="/security">Security</a></div><div class="flex gap-4 mb-8"><a aria-label="LinkedIn" class="w-10 h-10 flex items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-110" href="https://www.linkedin.com/company/healthcompiler" rel="noopener noreferrer" target="_blank"><svg class="lucide lucide-linkedin w-6 h-6" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="color:#0A66C2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect height="12" width="4" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a aria-label="Instagram" class="w-10 h-10 flex items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-110" href="https://www.instagram.com/healthcompiler/" rel="noopener noreferrer" target="_blank"><svg class="lucide lucide-instagram w-6 h-6" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="color:#E4405F" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><rect height="20" rx="5" ry="5" width="20" x="2" y="2"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg></a><a aria-label="Email" class="w-10 h-10 flex items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-110" href="mailto:info@healthcompiler.com" rel="noopener noreferrer" target="_blank"><svg class="lucide lucide-mail w-6 h-6" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="color:#000000" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><rect height="16" rx="2" width="20" x="2" y="4"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></a><a aria-label="YouTube" class="w-10 h-10 flex items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-110" href="https://www.youtube.com/@healthcompiler" rel="noopener noreferrer" target="_blank"><svg class="lucide lucide-youtube w-6 h-6" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="color:#FF0000" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"></path><path d="m10 15 5-3-5-3z"></path></svg></a></div></div><div class="md:col-span-3 lg:col-span-3"><h4 class="font-display font-semibold text-foreground text-lg mb-6 tracking-wide">QUICK LINKS</h4><ul class="space-y-4"><li><a class="text-muted-foreground hover:text-accent transition-colors" href="/">Home</a></li><li><a class="text-muted-foreground hover:text-accent transition-colors" href="/platform/integration">Integrations</a></li><li><a class="text-muted-foreground hover:text-accent transition-colors" href="/solutions/employer-analytics">Employer Analytics</a></li><li><a class="text-muted-foreground hover:text-accent transition-colors" href="/solutions/health-outcomes">Health Outcomes</a></li><li><a class="text-muted-foreground hover:text-accent transition-colors" href="/solutions/ai-call-triaging">AI Call Triaging</a></li></ul></div><div class="md:col-span-2"><h4 class="font-display font-semibold text-foreground text-lg mb-6 tracking-wide">RESOURCES</h4><ul class="space-y-4"><li><a class="text-muted-foreground hover:text-accent transition-colors" href="/apex">APEX</a></li><li><a class="text-muted-foreground hover:text-accent transition-colors" href="/resources/blogs">Blogs</a></li><li><a class="text-muted-foreground hover:text-accent transition-colors" href="/about">About Us</a></li><li><a class="text-muted-foreground hover:text-accent transition-colors" href="/resources/faqs">FAQs</a></li><li><a class="text-muted-foreground hover:text-accent transition-colors" href="/resources/whitepaper">Whitepaper</a></li></ul></div><div class="md:col-span-2"><h4 class="font-display font-semibold text-foreground text-lg mb-6 tracking-wide">REACH OUT</h4><ul class="space-y-4"><li><a class="text-muted-foreground hover:text-accent transition-colors" href="mailto:support@healthcompiler.com">Tech Support</a></li><li><a class="text-muted-foreground hover:text-accent transition-colors" href="">Customer Success</a></li><li><a class="text-muted-foreground hover:text-accent transition-colors" href="/book-a-demo">Sales</a></li><li><a class="text-muted-foreground hover:text-accent transition-colors" href="/careers">Careers</a></li><li><a class="text-muted-foreground hover:text-accent transition-colors" href="/contact">Contact Us</a></li></ul></div></div><div class="w-full flex flex-wrap justify-left items-center gap-4 md:gap-6 lg:gap-8"><img alt="HIPAA Compliant and AICPA SOC 2 Type II certified" class="h-14 sm:h-16 lg:h-20 w-auto object-contain" data-nimg="1" decoding="async" height="377" loading="lazy" src="images/image_13.jpg" srcset="images/image_13.jpg 1x, images/image_13.jpg 2x" style="color:transparent" width="661"/><img alt="Free Market Medical Association" class="h-14 sm:h-16 lg:h-20 w-auto object-contain mix-blend-multiply" data-nimg="1" decoding="async" height="162" loading="lazy" src="images/image_12.jpg" srcset="images/image_12.jpg 1x, images/image_12.jpg 2x" style="color:transparent" width="311"/><img alt="DPC Alliance" class="h-8 sm:h-10 lg:h-12 w-auto object-contain mix-blend-multiply" data-nimg="1" decoding="async" height="200" loading="lazy" src="images/image.jpg" srcset="images/image.jpg 1x, images/image.jpg 2x" style="color:transparent" width="400"/><img alt="Chrome Store" class="h-10 sm:h-12 lg:h-[48px] w-auto object-contain mix-blend-multiply cursor-pointer" data-nimg="1" decoding="async" height="96" loading="lazy" src="images/image_10.jpg" srcset="images/image_10.jpg 1x, images/image_10.jpg 2x" style="color:transparent" width="340"/><img alt="Google Cloud Marketplace" class="h-14 sm:h-16 lg:h-[70px] w-auto object-contain mix-blend-multiply cursor-pointer" data-nimg="1" decoding="async" height="242" loading="lazy" src="images/image_4.jpg" srcset="images/image_10.jpg 1x, images/image_4.jpg 2x" style="color:transparent" width="399"/></div></div></footer><section aria-atomic="false" aria-label="Notifications alt+T" aria-live="polite" aria-relevant="additions text" tabindex="-1"></section><script src="custom_interactivity.js"></script></body></html>
+<!--$--><!--/$--><script id="hc-animation-observer">
+document.addEventListener('DOMContentLoaded', function() {
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('hc-visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.hc-animate-reveal').forEach(el => {
+    observer.observe(el);
+  });
+});
+</script></main><footer class="bg-background-secondary border-t border-border/50"><div class="container mx-auto px-6 py-12 md:py-16"><div class="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8"><div class="md:col-span-6 lg:col-span-5"><a class="inline-block mb-6" href="/"><img alt="HealthCompiler" class="h-10 w-auto" data-nimg="1" decoding="async" height="56" loading="lazy" src="images/image.png" srcset="images/image.png 1x, images/image.png 2x" style="color:transparent" width="360"/></a><div class="space-y-1 text-sm text-muted-foreground mb-4"><p class="font-semibold text-foreground">+1 408 883 7902</p><p>Health Compiler Inc.</p><p>2261 Market Street #4632</p><p>San Francisco, CA 94114</p></div><p class="text-sm text-muted-foreground mb-2">All Rights Reserved | Health Compiler Inc. © <!-- -->2026</p><p class="text-sm text-muted-foreground mb-4">Made with <span class="text-red-500">❤️</span> in San Francisco</p><div class="flex flex-wrap items-center gap-x-2 gap-y-1 mb-6"><a class="text-sm text-muted-foreground underline cursor-pointer hover:text-foreground transition-colors whitespace-nowrap" href="/privacy">Privacy Policy</a><span class="text-muted-foreground">|</span><a class="text-sm text-muted-foreground underline cursor-pointer hover:text-foreground transition-colors whitespace-nowrap" href="/terms">Terms of Service</a><span class="text-muted-foreground">|</span><a class="text-sm text-muted-foreground underline cursor-pointer hover:text-foreground transition-colors whitespace-nowrap" href="/security">Security</a></div><div class="flex gap-4 mb-8"><a aria-label="LinkedIn" class="w-10 h-10 flex items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-110" href="https://www.linkedin.com/company/healthcompiler" rel="noopener noreferrer" target="_blank"><svg class="lucide lucide-linkedin w-6 h-6" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="color:#0A66C2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect height="12" width="4" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a aria-label="Instagram" class="w-10 h-10 flex items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-110" href="https://www.instagram.com/healthcompiler/" rel="noopener noreferrer" target="_blank"><svg class="lucide lucide-instagram w-6 h-6" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="color:#E4405F" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><rect height="20" rx="5" ry="5" width="20" x="2" y="2"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg></a><a aria-label="Email" class="w-10 h-10 flex items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-110" href="mailto:info@healthcompiler.com" rel="noopener noreferrer" target="_blank"><svg class="lucide lucide-mail w-6 h-6" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="color:#000000" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><rect height="16" rx="2" width="20" x="2" y="4"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></a><a aria-label="YouTube" class="w-10 h-10 flex items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-110" href="https://www.youtube.com/@healthcompiler" rel="noopener noreferrer" target="_blank"><svg class="lucide lucide-youtube w-6 h-6" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="color:#FF0000" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"></path><path d="m10 15 5-3-5-3z"></path></svg></a></div></div><div class="md:col-span-3 lg:col-span-3"><h4 class="font-display font-semibold text-foreground text-lg mb-6 tracking-wide">QUICK LINKS</h4><ul class="space-y-4"><li><a class="text-muted-foreground hover:text-accent transition-colors" href="/">Home</a></li><li><a class="text-muted-foreground hover:text-accent transition-colors" href="/platform/integration">Integrations</a></li><li><a class="text-muted-foreground hover:text-accent transition-colors" href="/solutions/employer-analytics">Employer Analytics</a></li><li><a class="text-muted-foreground hover:text-accent transition-colors" href="/solutions/health-outcomes">Health Outcomes</a></li><li><a class="text-muted-foreground hover:text-accent transition-colors" href="/solutions/ai-call-triaging">AI Call Triaging</a></li></ul></div><div class="md:col-span-2"><h4 class="font-display font-semibold text-foreground text-lg mb-6 tracking-wide">RESOURCES</h4><ul class="space-y-4"><li><a class="text-muted-foreground hover:text-accent transition-colors" href="/apex">APEX</a></li><li><a class="text-muted-foreground hover:text-accent transition-colors" href="/resources/blogs">Blogs</a></li><li><a class="text-muted-foreground hover:text-accent transition-colors" href="/about">About Us</a></li><li><a class="text-muted-foreground hover:text-accent transition-colors" href="/resources/faqs">FAQs</a></li><li><a class="text-muted-foreground hover:text-accent transition-colors" href="/resources/whitepaper">Whitepaper</a></li></ul></div><div class="md:col-span-2"><h4 class="font-display font-semibold text-foreground text-lg mb-6 tracking-wide">REACH OUT</h4><ul class="space-y-4"><li><a class="text-muted-foreground hover:text-accent transition-colors" href="mailto:support@healthcompiler.com">Tech Support</a></li><li><a class="text-muted-foreground hover:text-accent transition-colors" href="">Customer Success</a></li><li><a class="text-muted-foreground hover:text-accent transition-colors" href="/book-a-demo">Sales</a></li><li><a class="text-muted-foreground hover:text-accent transition-colors" href="/careers">Careers</a></li><li><a class="text-muted-foreground hover:text-accent transition-colors" href="/contact">Contact Us</a></li></ul></div></div><div class="w-full flex flex-wrap justify-left items-center gap-4 md:gap-6 lg:gap-8"><img alt="HIPAA Compliant and AICPA SOC 2 Type II certified" class="h-14 sm:h-16 lg:h-20 w-auto object-contain" data-nimg="1" decoding="async" height="377" loading="lazy" src="images/image_13.jpg" srcset="images/image_13.jpg 1x, images/image_13.jpg 2x" style="color:transparent" width="661"/><img alt="Free Market Medical Association" class="h-14 sm:h-16 lg:h-20 w-auto object-contain mix-blend-multiply" data-nimg="1" decoding="async" height="162" loading="lazy" src="images/image_12.jpg" srcset="images/image_12.jpg 1x, images/image_12.jpg 2x" style="color:transparent" width="311"/><img alt="DPC Alliance" class="h-8 sm:h-10 lg:h-12 w-auto object-contain mix-blend-multiply" data-nimg="1" decoding="async" height="200" loading="lazy" src="images/image.jpg" srcset="images/image.jpg 1x, images/image.jpg 2x" style="color:transparent" width="400"/><img alt="Chrome Store" class="h-10 sm:h-12 lg:h-[48px] w-auto object-contain mix-blend-multiply cursor-pointer" data-nimg="1" decoding="async" height="96" loading="lazy" src="images/image_10.jpg" srcset="images/image_10.jpg 1x, images/image_10.jpg 2x" style="color:transparent" width="340"/><img alt="Google Cloud Marketplace" class="h-14 sm:h-16 lg:h-[70px] w-auto object-contain mix-blend-multiply cursor-pointer" data-nimg="1" decoding="async" height="242" loading="lazy" src="images/image_4.jpg" srcset="images/image_10.jpg 1x, images/image_4.jpg 2x" style="color:transparent" width="399"/></div></div></footer><section aria-atomic="false" aria-label="Notifications alt+T" aria-live="polite" aria-relevant="additions text" tabindex="-1"></section><script src="custom_interactivity.js"></script></body></html>
